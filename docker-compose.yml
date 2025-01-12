@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb_container
+    restart: always
+    ports:
+      - 27027:27027 # Expose MongoDB to the host
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - mongo_network
+    volumes:
+      - mongodb_data:/data/db # Persist MongoDB data
+
+networks:
+  mongo_network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local
