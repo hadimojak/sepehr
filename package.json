@@ -18,5 +18,8 @@
     "fastify": "^5.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5"
   }
 }
