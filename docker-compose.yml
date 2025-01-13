@@ -1,24 +1,16 @@
-version: '3.9'
+version: "3.8"
 
 services:
   mongodb:
-    image: mongo:6.0
-    container_name: mongodb_container
-    restart: always
+    image: mongo
+    container_name: mongodb
     ports:
-      - 27027:27027 # Expose MongoDB to the host
+      - "27017:27017" # Map MongoDB's default port to your local machine
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    networks:
-      - mongo_network
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
-      - mongodb_data:/data/db # Persist MongoDB data
-
-networks:
-  mongo_network:
-    driver: bridge
+      - mongodb_data:/data/db # Persist data across container restarts
 
 volumes:
   mongodb_data:
-    driver: local
