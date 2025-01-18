@@ -9,8 +9,10 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
+    restart: always
     volumes:
       - mongodb_data:/data/db # Persist data across container restarts
+    
 
 volumes:
   mongodb_data:
